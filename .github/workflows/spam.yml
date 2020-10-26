@@ -16,7 +16,7 @@ jobs:
       - name: Get issue or PR number
         run: |
           # Check whether the workflow is triggered on an issue or PR
-          if [[ "$GITHUB_EVENT_NAME" == "issue" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "issues" ]]; then
             echo "NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
           else
             echo "NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
