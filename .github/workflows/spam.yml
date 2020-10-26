@@ -13,14 +13,14 @@ jobs:
       contains(github.event.issue.labels.*.name, 'spam') ||
       contains(github.event.pull_request.labels.*.name, 'spam')
     steps:
-      # Check whether the workflow is triggered on an issue or PR
       - name: Get issue or PR number
         run: |
-        if [[ "$GITHUB_EVENT_NAME" == "issue" ]]; then
-          echo "NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
-        else
-          echo "NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
-        fi
+          # Check whether the workflow is triggered on an issue or PR
+          if [[ "$GITHUB_EVENT_NAME" == "issue" ]]; then
+            echo "NUMBER=${{ github.event.issue.number }}" >> $GITHUB_ENV
+          else
+            echo "NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+          fi
 
       - name: Close issue or PR
         run: |
