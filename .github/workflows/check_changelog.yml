@@ -1,0 +1,29 @@
+name: "Check Changelog"
+description: "Check Changelog"
+author: "Chiara Marmo"
+
+on:
+  pull_request:
+    types: submitted
+
+inputs:
+  pr-number:
+    description: "Pull request number"
+    required: True
+    default: ${{ github.event.pull_request.number }}
+  pr-author:
+    description: "Pull request author"
+    required: True
+    default: ${{ github.event.pull_request.sender }}
+
+outputs:
+  check-bool: 
+    description: "Check Changelog result"
+    value: ${{ steps.check-changelog.outputs.result }}
+
+runs:
+  using: "composite"
+  steps: 
+    - id: check-changelog
+      run: $GITHUB_ACTION_PATH/check_changelog/script.sh
+      shell: bash
