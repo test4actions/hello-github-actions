@@ -16,7 +16,7 @@ jobs:
           fetch-depth: '0'
       - name: Check the changelog only if tests have been modified
         run: |
-          set -xe
+          set -x
           tests=`git diff --name-only origin/master | grep tests`
           if [ "$tests" != "" ]
           then
