@@ -21,7 +21,7 @@ jobs:
           if [[ "$tests" =~ tests ]]
           then
             result=$(cat ./changelog.rst)
-            if [[ "$result" =~ $PR_NUMBER ]]
+            if [[ "$result" =~ :pr:\`$PR_NUMBER\` ]]
             then
               echo "Changelog has been updated."
             else
