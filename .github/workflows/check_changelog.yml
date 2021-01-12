@@ -25,7 +25,6 @@ jobs:
             then
               echo "Changelog has been updated."
             else
-            then
               echo "Changelog entry is missing."
               exit 1
             fi
