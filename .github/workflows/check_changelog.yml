@@ -17,13 +17,13 @@ jobs:
       - name: Check the changelog only if tests have been modified
         run: |
           set -xe
-          tests=`git diff --name-only origin/master`
+          tests=$(git diff --name-only origin/master)
           if [[ "$tests" =~ tests ]]
           then
-            result=$(grep "$PR_NUMBER" ./changelog.rst)
-            if [ "$result" != "" ]
+            result=$(cat ./changelog.rst)
+            if [[ "$result" =~ $PR_NUMBER ]]
             then
-              echo $result
+              echo "Changelog has been updated."
             else
             then
               echo "Changelog entry is missing."
