@@ -16,11 +16,11 @@ jobs:
           fetch-depth: '0'
       - name: Check the changelog only if tests have been modified
         run: |
-          set -x
-          tests=`git diff --name-only origin/master | grep tests`
+          set -xe
+          tests=$(git diff --name-only origin/master | grep tests)
           if [ "$tests" != "" ]
           then
-            result=`grep "$PR_NUMBER" ./changelog.rst`
+            result=$(grep "$PR_NUMBER" ./changelog.rst)
             if [ "$result" != "" ]
             then
               echo $result
