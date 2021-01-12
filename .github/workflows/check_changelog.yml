@@ -17,7 +17,7 @@ jobs:
       - name: Check the changelog only if tests have been modified
         run: |
           set -xe
-          tests=`git diff --name-only master`
+          tests=`git diff --name-only origin/master`
           if [[ "$tests" =~ tests ]]
           then
             result=$(grep "$PR_NUMBER" ./changelog.rst)
